@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from "react";
+import React, { useState, useCallback, useContext, useEffect } from "react";
 import "./HomePage.scss";
 import { myContext } from "../context/context";
 import Loading from "../Loading/Loading";
@@ -19,7 +19,10 @@ const HomePage = () => {
   const { fetchHomePageMeals, meals } = useContext(myContext);
 
   const fetchMealsHandler = useCallback(() => {
-    fetchHomePageMeals(searchTerm);
+    const timing = setTimeout(() => {
+      setLoading(true);
+    }, 2000);
+    return () => setTimeout(timing), fetchHomePageMeals(searchTerm);
   }, [searchTerm, fetchHomePageMeals]);
 
   const [modal, setModal] = useState(false);
@@ -62,81 +65,91 @@ const HomePage = () => {
             placeholder="Type a meal..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                fetchMealsHandler();
+              }
+            }}
           />
           <button onClick={fetchMealsHandler}>Search Meal</button>
         </div>
         <div className="home-grid">
-          {meals ? (
-            meals.map((meal, index) => (
-              <div key={index}>
-                <div className="home-meal">
-                  <img src={meal.strMealThumb} alt="meal" />
-                  <h4>{meal.strMeal}</h4>
-                  <button
-                    className="btn-ingredient"
-                    onClick={() => {
-                      setShow(true);
-                      setIdMeal(index);
-                    }}
-                  >
-                    Ingredients
-                  </button>
-                  <br />
-                  <button
-                    className="btn-seemore"
-                    onClick={() => window.open(meal.strYoutube)}
-                  >
-                    See Complete Recipe
-                  </button>
-                </div>
-
-                <Dialog open={show}>
-                  <DialogContent>
-                    <DialogActions>
-                      <button
-                        className="btn recipe-close-btn"
-                        onClick={() => setShow(false)}
-                      >
-                        <i className="fas fa-times" />
-                      </button>
-                    </DialogActions>
-                    {/* Nhung Noi Dung Phan Popup */}
-                    <h2 className="recipe-title">{meals[idMeal].strMeal}</h2>
-                    <p className="recipe-category">
-                      {meals[idMeal].strCategory}
-                    </p>
-                    <div class="recipe-instruct">
-                      <h3>Instructions:</h3>
-                      <p>{meals[idMeal].strInstructions}</p>
-                    </div>
-                    <img src={meals[idMeal].strMealThumb} alt="meal" />
-                    {idIngredient(meals[idMeal])}
-                    <a
-                      className="recipe-link"
-                      onClick={() => window.open(meals[idMeal].strYoutube)}
+          {loading ? (
+            meals ? (
+              meals.map((meal, index) => (
+                <div key={index}>
+                  <div className="home-meal">
+                    <img src={meal.strMealThumb} alt="meal" />
+                    <h4>{meal.strMeal}</h4>
+                    <button
+                      className="btn-ingredient"
+                      onClick={() => {
+                        setShow(true);
+                        setIdMeal(index);
+                      }}
                     >
-                      See On <i class="fab fa-youtube"></i>
-                    </a>
-                  </DialogContent>
-                </Dialog>
-              </div>
-            ))
-          ) : (
-            <>
-              <div className="no-search">
-                <div className="content">
-                  <h1>DON'T CRY!</h1>
-                  <p>
-                    The page you're looking for isn't here. Hit up our homepage
-                    for some delicious recipe ideas. We'll clean up the spill.
-                  </p>
+                      Ingredients
+                    </button>
+                    <br />
+                    <button
+                      className="btn-seemore"
+                      onClick={() => window.open(meal.strYoutube)}
+                    >
+                      See Complete Recipe
+                    </button>
+                  </div>
+
+                  <Dialog open={show}>
+                    <DialogContent>
+                      <DialogActions>
+                        <button
+                          className="btn recipe-close-btn"
+                          onClick={() => setShow(false)}
+                        >
+                          <i className="fas fa-times" />
+                        </button>
+                      </DialogActions>
+                      {/* Nhung Noi Dung Phan Popup */}
+                      <h2 className="recipe-title">{meals[idMeal].strMeal}</h2>
+                      <p className="recipe-category">
+                        {meals[idMeal].strCategory}
+                      </p>
+                      <div class="recipe-instruct">
+                        <h3>Instructions:</h3>
+                        <p>{meals[idMeal].strInstructions}</p>
+                      </div>
+                      <img src={meals[idMeal].strMealThumb} alt="meal" />
+                      {idIngredient(meals[idMeal])}
+                      <a
+                        className="recipe-link"
+                        onClick={() => window.open(meals[idMeal].strYoutube)}
+                      >
+                        See On <i class="fab fa-youtube"></i>
+                      </a>
+                    </DialogContent>
+                  </Dialog>
                 </div>
-                <img
-                  src="https://www.epicurious.com/static/img/error/404-1024.png"
-                  alt="#"
-                ></img>
-              </div>
-            </>
+              ))
+            ) : (
+              <>
+                <div className="no-search">
+                  <div className="content">
+                    <h1>DON'T CRY!</h1>
+                    <p>
+                      The page you're looking for isn't here. Hit up our
+                      homepage for some delicious recipe ideas. We'll clean up
+                      the spill.
+                    </p>
+                  </div>
+                  <img
+                    src="https://www.epicurious.com/static/img/error/404-1024.png"
+                    alt="#"
+                  ></img>
+                </div>
+              </>
+            )
+          ) : (
+            <Loading />
           )}
         </div>
       </div>

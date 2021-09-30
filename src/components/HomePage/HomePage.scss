@@ -19,7 +19,7 @@
     input {
       padding: 10px;
       outline: none;
-      border: 1px solid #ccc;
+      border: none;
       width: 300px;
       font-size: 18px;
       border-radius: 10px;
@@ -28,14 +28,14 @@
 
     button {
       font-size: 18px;
-      border: 1px solid #ccc;
       padding: 5px;
       color: #fff;
-      background: #f3b542;
+      background: #d65108;
       margin-left: 10px;
       border-radius: 5px;
       outline: none;
       cursor: pointer;
+      border: none;
     }
   }
 
@@ -111,6 +111,10 @@
 }
 
 // Code phan popup
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  border-radius: 15px;
+}
+
 .css-ypiqx9-MuiDialogContent-root {
   background: #d65108;
   display: flex;
