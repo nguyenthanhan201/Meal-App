@@ -1,7 +1,7 @@
 .home {
   min-height: 100vh;
   height: auto;
-  background: #000;
+  background: #171921de;
   color: #fff;
   width: 100%;
   display: flex;
@@ -28,7 +28,7 @@
 
     button {
       font-size: 18px;
-      padding: 5px;
+      padding: 13px 23px;
       color: #fff;
       background: #d65108;
       margin-left: 10px;
@@ -48,8 +48,6 @@
 
     .home-meal {
       text-align: center;
-      border: 1px solid white;
-      margin: 0 0 10px 0;
     }
     .home-meal .btn-ingredient {
       font-size: 18px;
@@ -251,7 +249,7 @@ table {
   overflow: hidden;
   max-width: 800px;
   width: 100%;
-  margin: 0 auto;
+  margin: 10px 0 0 0;
   position: relative;
   color: #000000;
   text-align: center;
@@ -268,4 +266,14 @@ thead tr {
 }
 tbody tr td p {
   padding: 5px;
+}
+//Card Meal
+.Tilt {
+  padding: 10px !important;
+  background: #c85000 !important;
+  border-radius: 10px !important;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
+}
+.lds-ellipsis {
+  background: rgba(0, 0, 0, 0) !important;
 }

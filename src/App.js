@@ -20,9 +20,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {loading ? (
-        <Loading />
-      ) : (
+      {
         <Router>
           <Navbar />
           <Switch>
@@ -32,7 +30,7 @@ const App = () => {
           </Switch>
           <Footer />
         </Router>
-      )}
+      }
     </div>
   );
 };

@@ -2,6 +2,10 @@ import React, { useState, useCallback, useContext, useEffect } from "react";
 import "./HomePage.scss";
 import { myContext } from "../context/context";
 import Loading from "../Loading/Loading";
+import styled from "styled-components";
+import { useSpring, animated } from "react-spring";
+import Tilt from "react-vanilla-tilt";
+// import ReactPlayer from "react-player";
 
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
@@ -13,14 +17,16 @@ const HomePage = () => {
 
   const [show, setShow] = React.useState(false);
 
+  const [show2, setShow2] = React.useState(false);
+
   const [searchTerm, setSearchTerm] = useState("");
   // console.log(searchTerm);
-
   const { fetchHomePageMeals, meals } = useContext(myContext);
 
   const fetchMealsHandler = useCallback(() => {
+    setLoading(true);
     const timing = setTimeout(() => {
-      setLoading(true);
+      setLoading(false);
     }, 2000);
     return () => setTimeout(timing), fetchHomePageMeals(searchTerm);
   }, [searchTerm, fetchHomePageMeals]);
@@ -73,6 +79,15 @@ const HomePage = () => {
     );
   }
 
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const timing = setTimeout(() => {
+  //     fetchHomePageMeals(searchTerm);
+  //     setLoading(false);
+  //   }, 4000);
+  //   return () => clearTimeout(timing);
+  // }, []);
+
   return (
     <>
       <div className="home">
@@ -91,29 +106,33 @@ const HomePage = () => {
           <button onClick={fetchMealsHandler}>Search Meal</button>
         </div>
         <div className="home-grid">
+          {loading && <Loading />}
           {meals ? (
+            !loading &&
             meals.map((meal, index) => (
               <div key={index}>
-                <div className="home-meal">
-                  <img src={meal.strMealThumb} alt="meal" />
-                  <h4>{meal.strMeal}</h4>
-                  <button
-                    className="btn-ingredient"
-                    onClick={() => {
-                      setShow(true);
-                      setIdMeal(index);
-                    }}
-                  >
-                    Ingredients
-                  </button>
-                  <br />
-                  <button
-                    className="btn-seemore"
-                    onClick={() => window.open(meal.strYoutube)}
-                  >
-                    See Complete Recipe
-                  </button>
-                </div>
+                <Tilt className="Tilt">
+                  <div className="home-meal">
+                    <img src={meal.strMealThumb} alt="meal" />
+                    <h4>{meal.strMeal}</h4>
+                    <button
+                      className="btn-ingredient"
+                      onClick={() => {
+                        setShow(true);
+                        setIdMeal(index);
+                      }}
+                    >
+                      Ingredients
+                    </button>
+                    <br />
+                    <button
+                      className="btn-seemore"
+                      onClick={() => setShow2(true)}
+                    >
+                      See Complete Recipe
+                    </button>
+                  </div>
+                </Tilt>
 
                 <Dialog open={show}>
                   <DialogContent>
@@ -155,6 +174,19 @@ const HomePage = () => {
                     >
                       See On <i class="fab fa-youtube"></i>
                     </a>
+                  </DialogContent>
+                </Dialog>
+
+                <Dialog open={show2}>
+                  <DialogContent>
+                    <DialogActions>
+                      <button
+                        className="btn recipe-close-btn"
+                        onClick={() => setShow2(false)}
+                      >
+                        <i className="fas fa-times" />
+                      </button>
+                    </DialogActions>
                   </DialogContent>
                 </Dialog>
               </div>
