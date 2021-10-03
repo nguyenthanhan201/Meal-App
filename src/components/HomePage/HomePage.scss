@@ -5,85 +5,101 @@
   color: #fff;
   width: 100%;
   display: flex;
-  align-items: center;
   flex-direction: column;
+}
+
+.home-search {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.home-search input {
+  padding: 10px;
+  outline: none;
+  border: none;
+  width: 300px;
+  font-size: 18px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.home-search button {
+  font-size: 18px;
+  padding: 13px 23px;
+  color: #fff;
+  background: #d65108;
+  margin-left: 10px;
+  border-radius: 5px;
+  outline: none;
   cursor: pointer;
+  border: none;
+}
+.cards {
+  --spacing: 30px;
+  --columns: 4;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(-1 * var(--spacing));
+  justify-content: center;
+}
+.card {
+  border-radius: 20px;
+  width: calc(calc(100% / var(--columns)) - var(--spacing));
+  margin-left: var(--spacing);
+  margin-bottom: var(--spacing);
+  display: flex;
+  justify-content: center;
+}
+.tilt {
+  height: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: rgba(0, 0, 0, 0) !important;
+  border-radius: 20px !important;
+  background: #c85000 !important;
+  color: #eee !important;
 
-  &-search {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    input {
-      padding: 10px;
-      outline: none;
-      border: none;
-      width: 300px;
-      font-size: 18px;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
-
-    button {
-      font-size: 18px;
-      padding: 13px 23px;
-      color: #fff;
-      background: #d65108;
-      margin-left: 10px;
-      border-radius: 5px;
-      outline: none;
-      cursor: pointer;
-      border: none;
-    }
-  }
-
-  &-grid {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    .home-meal {
-      text-align: center;
-    }
-    .home-meal .btn-ingredient {
-      font-size: 18px;
-      width: 90%;
-      cursor: pointer;
-      padding: 10px 15px;
-      margin: 10px 0 10px 0;
-      border-radius: 4px;
-      border: 1px solid green;
-      color: green;
-    }
-    .home-meal .btn-seemore {
-      font-size: 18px;
-      width: 90%;
-      cursor: pointer;
-      padding: 10px 15px;
-      margin: 10px 0 10px 0;
-      border-radius: 4px;
-      border: 1px solid #eb3300;
-      color: #eb3300;
-    }
-    img {
-      width: 250px;
-      border: 1px solid #ccc;
-      margin: 10px;
-      transition: all 0.4s ease;
-      border-radius: 10px;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-    h4 {
-      max-width: 272px;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+}
+.card img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0; //khong cho phep phan tu do co lai
+  border-radius: 20px 20px 0 0;
+}
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-top {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1; //chiem phan con lai
+}
+.card-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.card-category {
+  margin-top: auto;
+  flex-shrink: 0;
+}
+.card-bottom {
+  padding: 15px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; //day phia tren de no o duoi cung
+  flex-shrink: 0;
 }
 .no-search {
   display: flex;
@@ -107,8 +123,17 @@
   border: 1px solid #eb3300;
   color: #eb3300;
 }
+.btn-ingredient,
+.btn-seemore {
+  padding: 0.75rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  color: #eee;
+  background: #171921;
+}
 
-// Code phan popup
+/* Code phan popup */
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
   border-radius: 15px;
 }
@@ -138,7 +163,6 @@
   right: 2rem;
   top: 2rem;
   font-size: 1.8rem;
-  // background: #fff;
   border: none;
   width: 35px;
   height: 35px;
@@ -146,7 +170,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  // opacity: 0.9;
   cursor: pointer;
 }
 .recipe-title {
@@ -166,9 +189,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  p {
-    text-align: center;
-  }
+}
+.recipe-instruct p {
+  text-align: center;
 }
 .recipe-meal-img img {
   width: 100px;
@@ -191,7 +214,7 @@
 .recipe-link a:hover {
   opacity: 0.8;
 }
-//Button Youtube
+
 i.fab.fa-youtube {
   margin: 0 0 0 10px;
 }
@@ -240,7 +263,7 @@ i.fab.fa-youtube {
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   transform: translateY(0);
 }
-//Table Popup
+
 table {
   border-spacing: 1;
   border-collapse: collapse;
@@ -267,13 +290,20 @@ thead tr {
 tbody tr td p {
   padding: 5px;
 }
-//Card Meal
-.Tilt {
-  padding: 10px !important;
-  background: #c85000 !important;
-  border-radius: 10px !important;
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
-}
+
 .lds-ellipsis {
   background: rgba(0, 0, 0, 0) !important;
+}
+//Code responsive
+@media screen and (max-width: 1023px) {
+  .cards {
+    --columns: 2;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .cards {
+    --spacing: 15px;
+    --columns: 1;
+  }
 }
