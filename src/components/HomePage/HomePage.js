@@ -17,7 +17,7 @@ const HomePage = () => {
   const [show2, setShow2] = React.useState(false);
 
   const [searchTerm, setSearchTerm] = useState("");
-  // console.log(searchTerm);
+
   const { fetchHomePageMeals, meals, fetchCategories, categories } =
     useContext(myContext);
 
@@ -29,17 +29,9 @@ const HomePage = () => {
     return () => setTimeout(timing), fetchHomePageMeals(searchTerm);
   }, [searchTerm, fetchHomePageMeals]);
 
-  useEffect(() => {
-    return fetchCategories();
-  }, [fetchCategories]);
-
   const [modal, setModal] = useState(false);
 
   const [idMeal, setIdMeal] = useState(0);
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
 
   if (modal) {
     document.body.classList.add("active-modal");
@@ -80,6 +72,14 @@ const HomePage = () => {
       </>
     );
   }
+
+  useEffect(() => {
+    return fetchCategories();
+  }, [fetchCategories]);
+
+  useEffect(() => {
+    setSearchTerm(categories[0].strCategory);
+  }, [categories]);
 
   return (
     <div className="home">

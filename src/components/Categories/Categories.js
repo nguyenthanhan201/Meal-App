@@ -11,11 +11,6 @@ const Categories = () => {
     fetchCategories();
   }, [fetchCategories]);
 
-  // componentDid() {
-  //   setTimeout(()=>{
-  //     this.props.history.push('/');
-  //   },3000);
-  // }
   return (
     <div className="categories">
       {categories.map((category) => (
