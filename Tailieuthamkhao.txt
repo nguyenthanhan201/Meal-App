@@ -1,8 +1,8 @@
 clean-up file react:https://www.youtube.com/watch?v=PAqbIbdvTuU
-Based on :https://www.youtube.com/watch?v=0wg0pP-jZhM&list=WL&index=1&t=519s
+Based on :https://www.youtube.com/watch?v=0wg0pP-jZhM&list=WL&index=1&t=519s 
 Function for oder meals(btn-ingredients vs btn see complete recipe):https://www.youtube.com/watch?v=9JnF1nyTWg4
 Glassmorphism Card reactjs: https://www.youtube.com/watch?v=69wjsfO0cGk
 Youtube Reactjs: https://www.youtube.com/watch?v=7sDY4m8KNLc
 Flex box Card: https://www.youtube.com/watch?v=i4z7PIlvJkg
 
-window.open(meal.strYoutube)
+window.open(meal.strYoutube) duc

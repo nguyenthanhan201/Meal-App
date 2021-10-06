@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
 const Categories = () => {
-  const { fetchCategories, categories } = useContext(myContext);
+  const { fetchCategories, categories, inputCate } = useContext(myContext);
 
   useEffect(() => {
     fetchCategories();
@@ -16,7 +16,11 @@ const Categories = () => {
       {categories.map((category) => (
         <div key={category.idCategory}>
           <Link to="/">
-            <img src={category.strCategoryThumb} alt="categories" />
+            <img
+              onClick={() => (inputCate.current = category?.strCategory)}
+              src={category.strCategoryThumb}
+              alt="categories"
+            />
           </Link>
           <h4>{category.strCategory}</h4>
           <p>{category.strCategoryDescription}</p>

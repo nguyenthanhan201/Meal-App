@@ -1,14 +1,19 @@
-import React, { createContext, useCallback, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 import axios from "axios";
+
 export const myContext = createContext();
 
 export const AppContext = ({ children }) => {
   const [meals, setMeals] = useState([]);
   const [categories, setCategories] = useState([]);
   const [randoms, setRandom] = useState([]);
-  const [inputCate, setInputCate] = useState("");
-
-  useEffect(() => {}, []);
+  const inputCate = useRef("");
 
   const fetchHomePageMeals = useCallback((searchTerm) => {
     axios
@@ -43,6 +48,7 @@ export const AppContext = ({ children }) => {
         categories,
         fetchRandomMeal,
         randoms,
+        inputCate,
       }}
     >
       {children}

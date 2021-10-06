@@ -18,8 +18,14 @@ const HomePage = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { fetchHomePageMeals, meals, fetchCategories, categories } =
-    useContext(myContext);
+  const {
+    fetchHomePageMeals,
+    meals,
+    fetchCategories,
+    categories,
+    inputCate,
+    setInputCate,
+  } = useContext(myContext);
 
   const fetchMealsHandler = useCallback(() => {
     setLoading(true);
@@ -77,9 +83,9 @@ const HomePage = () => {
     return fetchCategories();
   }, [fetchCategories]);
 
-  useEffect(() => {
-    setSearchTerm(categories[0].strCategory);
-  }, [categories]);
+  useEffect(async () => {
+    setSearchTerm(inputCate.current);
+  }, [inputCate.current]);
 
   return (
     <div className="home">
