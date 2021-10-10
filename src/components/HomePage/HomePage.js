@@ -91,6 +91,7 @@ const HomePage = () => {
     <div className="home">
       <div className=" home-search">
         <input
+          autoFocus
           className="search-control"
           type="text"
           placeholder="Type a meal..."
@@ -99,13 +100,13 @@ const HomePage = () => {
             setSearchTerm(e.target.value);
             fetchMealsHandler();
           }}
-          onKeyPress={(event) => {
-            if (event.key === "Enter") {
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
               fetchMealsHandler();
             }
           }}
         />
-        <button className="search-btn btn" onClick={fetchMealsHandler}>
+        <button className="search-btn-meal" onClick={fetchMealsHandler}>
           <i className="fas fa-search"></i>
         </button>
         {categories.map((category) => {
@@ -120,7 +121,7 @@ const HomePage = () => {
           {meals ? (
             !loading &&
             meals.map((meal, index) => (
-              <div key={index} className="card">
+              <div key={index} className="card-meal">
                 <Tilt className="tilt">
                   <img src={meal.strMealThumb} alt="meal" />
                   <div className="card-content">

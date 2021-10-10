@@ -29,7 +29,7 @@
 .search-control::placeholder {
   color: #c85000;
 }
-.search-btn {
+.search-btn-meal {
   width: 55px;
   height: 55px;
   font-size: 1.8rem;
@@ -40,7 +40,7 @@
   border-bottom-right-radius: 2rem;
   cursor: pointer;
 }
-.search-btn:hover {
+.search-btn-meal:hover {
   background: #eb3300;
 }
 .cards {
@@ -51,7 +51,7 @@
   margin-left: calc(-1 * var(--spacing));
   justify-content: center;
 }
-.card {
+.card-meal {
   border-radius: 20px;
   width: calc(calc(100% / var(--columns)) - var(--spacing));
   margin-left: var(--spacing);
@@ -71,7 +71,7 @@
   display: flex;
   flex-direction: column;
 }
-.card img {
+.card-meal img {
   height: 200px;
   width: 100%;
   object-fit: cover;
@@ -165,8 +165,8 @@
 }
 .recipe-close-btn {
   position: absolute;
-  right: 2rem;
-  top: 2rem;
+  right: 1rem;
+  top: 0rem;
   font-size: 1.8rem;
   border: none;
   width: 35px;
