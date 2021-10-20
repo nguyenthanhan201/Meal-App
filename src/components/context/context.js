@@ -12,6 +12,7 @@ export const myContext = createContext();
 export const AppContext = ({ children }) => {
   const [meals, setMeals] = useState([]);
   const [categories, setCategories] = useState([]);
+  // const [randoms, setRandom] = useState([]);
   const [randoms, setRandom] = useState([]);
   const inputCate = useRef("");
 
@@ -31,6 +32,13 @@ export const AppContext = ({ children }) => {
       });
   }, []);
 
+  // const fetchRandomMeal = useCallback(() => {
+  //   axios
+  //     .get(`https://www.themealdb.com/api/json/v1/1/random.php`)
+  //     .then((res) => {
+  //       setRandom(res.data.meals);
+  //     });
+  // }, []);
   const fetchRandomMeal = useCallback(() => {
     axios
       .get(`https://www.themealdb.com/api/json/v1/1/random.php`)
@@ -38,7 +46,6 @@ export const AppContext = ({ children }) => {
         setRandom(res.data.meals);
       });
   }, []);
-
   return (
     <myContext.Provider
       value={{
@@ -46,6 +53,8 @@ export const AppContext = ({ children }) => {
         meals,
         fetchCategories,
         categories,
+        // fetchRandomMeal,
+        // randoms,
         fetchRandomMeal,
         randoms,
         inputCate,
