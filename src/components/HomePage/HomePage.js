@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useContext, useEffect } from "react";
 import "./HomePage.scss";
 import { myContext } from "../context/context";
+// import Loading from "../Loading/Loading";
 import Loading from "../Loading/Loading";
 import Tilt from "react-vanilla-tilt";
 import ReactPlayer from "react-player";
@@ -10,6 +11,7 @@ import Dialog from "@mui/material/Dialog";
 import { DialogActions } from "@material-ui/core";
 
 const HomePage = () => {
+  // const [loading, setLoading] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const [show, setShow] = React.useState(false);
@@ -117,8 +119,10 @@ const HomePage = () => {
       </div>
       <div className="home-result">
         <div className="cards">
+          {/* {loading && <Loading />} */}
           {loading && <Loading />}
           {meals ? (
+            // !loading
             !loading &&
             meals.map((meal, index) => (
               <div key={index} className="card-meal">
