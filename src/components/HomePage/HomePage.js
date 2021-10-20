@@ -37,6 +37,7 @@ const HomePage = () => {
 
   const [modal, setModal] = useState(false);
 
+  // const [idMeal, setIdMeal] = useState(0);
   const [idMeal, setIdMeal] = useState(0);
 
   if (modal) {
@@ -45,6 +46,39 @@ const HomePage = () => {
     document.body.classList.remove("active-modal");
   }
 
+  // function idIngredient(ingredient) {
+  //   let arr = [
+  //     ingredient.strIngredient1,
+  //     ingredient.strIngredient2,
+  //     ingredient.strIngredient3,
+  //     ingredient.strIngredient4,
+  //     ingredient.strIngredient5,
+  //   ];
+  //   return (
+  //     <>
+  //       {arr.map((val, index) => (
+  //         <p key={index}>{val}</p>
+  //       ))}
+  //     </>
+  //   );
+  // }
+
+  // function idMeasure(measure) {
+  //   let arr = [
+  //     measure.strMeasure1,
+  //     measure.strMeasure2,
+  //     measure.strMeasure3,
+  //     measure.strMeasure4,
+  //     measure.strMeasure5,
+  //   ];
+  //   return (
+  //     <>
+  //       {arr.map((val, index) => (
+  //         <p key={index}>{val}</p>
+  //       ))}
+  //     </>
+  //   );
+  // }
   function idIngredient(ingredient) {
     let arr = [
       ingredient.strIngredient1,
@@ -78,7 +112,6 @@ const HomePage = () => {
       </>
     );
   }
-
   useEffect(() => {
     return fetchCategories();
   }, [fetchCategories]);
@@ -134,6 +167,10 @@ const HomePage = () => {
                     <div className="card-bottom">
                       <button
                         className="btn-ingredient"
+                        // onClick={() => {
+                        //   setShow(true);
+                        //   setIdMeal(index);
+                        // }}
                         onClick={() => {
                           setShow(true);
                           setIdMeal(index);
@@ -144,6 +181,11 @@ const HomePage = () => {
                       </button>
                       <br />
                       <button
+                        // className="btn-seemore"
+                        // onClick={() => {
+                        //   setShow2(true);
+                        //   setIdMeal(index);
+                        // }}
                         className="btn-seemore"
                         onClick={() => {
                           setShow2(true);
@@ -156,6 +198,47 @@ const HomePage = () => {
                   </div>
                 </Tilt>
 
+                {/* <Dialog open={show}>
+                  <DialogContent>
+                    <DialogActions>
+                      <button
+                        className="btn recipe-close-btn"
+                        onClick={() => setShow(false)}
+                      >
+                        <i className="fas fa-times" />
+                      </button>
+                    </DialogActions>
+                    <h2 className="recipe-title">{meals[idMeal].strMeal}</h2>
+                    <p className="recipe-category">
+                      {meals[idMeal].strCategory}
+                    </p>
+                    <div className="recipe-instruct">
+                      <h3>Instructions:</h3>
+                      <p>{meals[idMeal].strInstructions}</p>
+                    </div>
+                    <img src={meals[idMeal].strMealThumb} alt="meal" />
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Ingredients</th>
+                          <th>Measure</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{idIngredient(meals[idMeal])}</td>
+                          <td>{idMeasure(meals[idMeal])}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <a
+                      className="recipe-link"
+                      onClick={() => window.open(meals[idMeal].strYoutube)}
+                    >
+                      See On <i className="fab fa-youtube"></i>
+                    </a>
+                  </DialogContent>
+                </Dialog> */}
                 <Dialog open={show}>
                   <DialogContent>
                     <DialogActions>
@@ -166,7 +249,6 @@ const HomePage = () => {
                         <i className="fas fa-times" />
                       </button>
                     </DialogActions>
-                    {/* Nhung Noi Dung Phan Popup */}
                     <h2 className="recipe-title">{meals[idMeal].strMeal}</h2>
                     <p className="recipe-category">
                       {meals[idMeal].strCategory}
@@ -199,6 +281,19 @@ const HomePage = () => {
                   </DialogContent>
                 </Dialog>
 
+                {/* <Dialog open={show2}>
+                  <DialogContent>
+                    <DialogActions>
+                      <button
+                        className="btn recipe-close-btn"
+                        onClick={() => setShow2(false)}
+                      >
+                        <i className="fas fa-times" />
+                      </button>
+                    </DialogActions>
+                    <ReactPlayer url={meals[idMeal].strYoutube}></ReactPlayer>
+                  </DialogContent>
+                </Dialog> */}
                 <Dialog open={show2}>
                   <DialogContent>
                     <DialogActions>
