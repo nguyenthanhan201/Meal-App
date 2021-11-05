@@ -1,12 +1,12 @@
-import React from 'react'
-import "./Footer.scss"
+import React from 'react';
+import { FooterContainer } from './containers/footer'
 
-const Footer = () => {
-    return (
-        <div className="footer">
-            <p>Meal <span>App</span> 2021 &copy;</p>
-        </div>
-    )
+function Footer() {
+  return (
+   <>
+    <FooterContainer />
+   </>
+  );
 }
 
-export default Footer
+export default Footer;
