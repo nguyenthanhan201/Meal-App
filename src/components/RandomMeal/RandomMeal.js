@@ -9,6 +9,7 @@ const RandomMeal = () => {
         fetchRandomMeal();
     },[fetchRandomMeal]);
     return (
+        // MealApp/RandomOutputFood
         <div className="random">
             {randoms.map(meal=>(
                 <div key={meal.idMeal} className="random-grid">
