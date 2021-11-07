@@ -1,10 +1,13 @@
 import React from "react";
+import "./components/FontawsomeIcons";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Categories from "./components/Categories/Categories";
 import RandomMeal from "./components/RandomMeal/RandomMeal";
 import HomePage from "./components/HomePage/HomePage";
+
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => {
